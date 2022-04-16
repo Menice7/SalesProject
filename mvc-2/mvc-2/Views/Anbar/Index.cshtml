@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model List<Anbar>
+<link href="~/css/app.css" rel="stylesheet" />
+
+<a asp-controller="Anbar" asp-action="CreateItem" class="btn btn-outline-success">Create</a>
+<a asp-controller="Anbar" asp-action="Export" class="btn btn-outline-danger">Export</a>
+
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Ad</th>
+            <th>Daxili Kod</th>
+            <th>Xarici Kod</th>
+            <th>Növ</th>
+            <th>Ölkə</th>
+            <th>Say</th>
+            <th>Topdan Satış Qiyməti</th>
+            <th>Dəyişdir</th>
+            <th>Sil</th>
+            <th>Transfer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var anbar in Model)
+        {
+            <tr>
+                <td>@anbar.Ad</td>
+                <td>@anbar.Daxili_Kod</td>
+                <td>@anbar.Xarici_Kod</td>
+                <td>@anbar.NovAd</td>
+                <td>@anbar.OlkeAd</td>
+                <td>@anbar.Say</td>
+                <td>@anbar.Topdan_Satis_Qiymeti</td>
+                <td>
+                    @Html.ActionLink("Dəyişdir", "CreateItem", "Anbar", new { itemId = anbar.ItemId },
+               new { @class = "btn btn-success" })
+                </td>
+                <td>
+                    @Html.ActionLink("Sil", "Delete", "Anbar", new { itemId = anbar.ItemId },
+               new { @class = "btn btn-danger", onclick = "return confirm('Məlumat Silinsin?');" })
+                </td>
+                <td>
+                    @Html.ActionLink("Transfer", "TransferItem", "Anbar", new { itemId = anbar.ItemId },
+               new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

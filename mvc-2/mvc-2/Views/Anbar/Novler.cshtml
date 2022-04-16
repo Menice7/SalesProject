@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model List<Nov>
+<link href="~/css/app.css" rel="stylesheet" />
+<h1>Növlər</h1>
+<script language="JavaScript">function CallMe() { alert("Növ Silinsin?"); return false; }</script>
+
+<a asp-controller="Anbar" asp-action="CreateNov" class="btn btn-outline-primary">Əlavə et</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Növ</th>
+            <th>Dəyişdir</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var nov in Model)
+        {
+            <tr>
+                <td>@nov.NovAd</td>
+                <td>@Html.ActionLink("Dəyişdir", "CreateNov", "Anbar", new { novId = nov.NovId }, new { @class = "btn btn-success" })</td>
+                <td>@Html.ActionLink("Sil", "DeleteNov", "Anbar", new { NovId = nov.NovId }, new { @class = "btn btn-danger", onclick = "return confirm('Məlumat Silinsin?');" })</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

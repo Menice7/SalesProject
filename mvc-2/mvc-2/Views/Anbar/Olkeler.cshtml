@@ -1,0 +1,27 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model List<Olke>
+<link href="~/css/app.css" rel="stylesheet" />
+<h1>Ölkələr</h1>
+<a asp-controller="Anbar" asp-action="CreateOlke" class="btn btn-outline-primary">Əlavə et</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ölkə</th>
+            <th>Dəyişdir</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var olke in Model)
+        {
+            <tr>
+                <td>@olke.OlkeAd</td>
+                <td>@Html.ActionLink("Dəyişdir", "CreateOlke", "Anbar", new { olkeId = olke.OlkeId }, new { @class = "btn btn-success" })</td>
+                <td>@Html.ActionLink("Sil", "DeleteOlke", "Anbar", new { olkeId = olke.OlkeId }, new { @class = "btn btn-danger", onclick = "return confirm('Məlumat Silinsin?');" })</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

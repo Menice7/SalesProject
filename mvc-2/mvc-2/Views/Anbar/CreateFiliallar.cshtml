@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model Filiallar
+
+<h1>Yeni Filial Daxil Et</h1>
+
+<form method="post" asp-controller="Anbar" asp-action="AddOrUpdateFiliallar">
+    <div class="form-group">
+        <input asp-for="FilialId" type="text" hidden class="form-control" id="itemId" placeholder="Ad daxil edin">
+        <label for="ad">Ad</label>
+        <input asp-for="FilialAd" type="text" class="form-control" id="ad" placeholder="Ad daxil edin">
+        <span asp-validation-for="FilialAd" style="color:red"></span>
+    </div>
+    <button type="submit" style="float:right" class="btn btn-success">Saxla</button>
+</form>

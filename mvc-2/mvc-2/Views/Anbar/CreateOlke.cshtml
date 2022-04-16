@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model Olke
+
+<h1>Yeni Ölkə Daxil Et</h1>
+
+<form method="post" asp-controller="Anbar" asp-action="AddOrUpdateOlke">
+    <div class="form-group">
+        <input asp-for="OlkeId" type="text" hidden class="form-control" id="itemId" placeholder="Ad daxil edin">
+        <label for="olke">Ölkə</label>
+        <input asp-for="OlkeAd" type="text" class="form-control" id="olke" placeholder="Ölkə daxil edin">
+        <span asp-validation-for="OlkeAd" style="color:red"></span>
+    </div>
+    <button type="submit" style="float:right" class="btn btn-success">Saxla</button>
+</form>

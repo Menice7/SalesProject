@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model Nov
+
+<h1>Yeni Növ Daxil Et</h1>
+
+<form method="post" asp-controller="Anbar" asp-action="AddOrUpdateNov">
+    <div class="form-group">
+        <input asp-for="NovId" type="text" hidden class="form-control" id="itemId" placeholder="Ad daxil edin">
+        <label for="nov">Növ</label>
+        <input asp-for="NovAd" type="text" class="form-control" id="nov" placeholder="Növ daxil edin">
+        <span asp-validation-for="NovAd" style="color:red"></span>
+    </div>
+    <button type="submit" style="float:right" class="btn btn-success">Saxla</button>
+</form>

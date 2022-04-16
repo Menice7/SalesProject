@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model List<Filiallar>
+
+<h1>Get Filiallar</h1>
+<link href="~/css/app.css" rel="stylesheet" />
+
+<a asp-controller="Anbar" asp-action="CreateFiliallar" class="btn btn-outline-success">Create</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Dəyişdir</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var filiallar in Model)
+        {
+            <tr>
+                <td>@filiallar.FilialAd</td>
+                <td>
+                    @Html.ActionLink("Dəyişdir", "CreateFiliallar", "Anbar", new { filialId = filiallar.FilialId },
+               new { @class = "btn btn-success" })
+                </td>
+                <td>
+                    @Html.ActionLink("Sil", "DeleteFiliallar", "Anbar", new { filialId = filiallar.FilialId },
+               new { @class = "btn btn-danger", onclick = "return confirm('Məlumat Silinsin?');" })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

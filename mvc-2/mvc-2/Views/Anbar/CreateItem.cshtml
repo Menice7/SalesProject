@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model Anbar
+
+<h1>Create new Item</h1>
+
+<form method="post" asp-controller="Anbar" asp-action="AddOrUpdate">
+    <div class="form-group">
+        <input asp-for="ItemId" type="text" hidden class="form-control" id="itemId" placeholder="Ad daxil edin">
+        <label for="ad">Ad</label>
+        <input asp-for="Ad" type="text" class="form-control" id="ad" placeholder="Ad daxil edin">
+        <span asp-validation-for="Ad" style="color:red"></span>
+
+    </div>
+    <div class="form-group">
+        <label for="daxili_kod">Daxili Kod</label>
+        <input asp-for="Daxili_Kod" type="text" class="form-control" id="daxili_kod" placeholder="Daxili kodu daxil edin">
+        <span asp-validation-for="Daxili_Kod" style="color:red"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="xarici_kod">Xarici Kod</label>
+        <input asp-for="Xarici_Kod" type="text" class="form-control" id="xarici_kod" placeholder="Xarici kodu daxil edin">
+        <span asp-validation-for="Xarici_Kod" style="color:red"></span>
+    </div>
+    <div class="form-group">
+        <label for="NovId">Məhsulun növü</label>
+        <select asp-for="NovId" class="form-control" asp-items="@(new SelectList(Model.Novler,"NovId","NovAd"))"></select>
+    </div>
+    <div class="form-group">
+        <label for="OlkeId">Ölkə</label>
+        <select class="form-control" asp-for="OlkeId" asp-items="@(new SelectList(Model.Olkeler, "OlkeId","OlkeAd"))"></select>
+    </div>
+
+    <div class="form-group">
+        <label for="say">Say</label>
+        <input asp-for="Say" type="number" class="form-control" id="say" placeholder="Sayı daxil edin">
+        <span asp-validation-for="Say" style="color:red"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="qiymet">Topdan Satış Qiyməti</label>
+        <input asp-for="Topdan_Satis_Qiymeti" type="number" class="form-control" id="qiymet" placeholder="Topdan satış qiymətini daxil edin">
+        <span asp-validation-for="Topdan_Satis_Qiymeti" style="color:red"></span>
+    </div>
+    <button type="submit" style="float:right" class="btn btn-success">Saxla</button>
+</form>
